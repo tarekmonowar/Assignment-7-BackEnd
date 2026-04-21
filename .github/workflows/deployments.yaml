@@ -72,6 +72,10 @@ jobs:
           #delete pm2 if exits
           ssh ${EC2_USER}@${EC2_HOST} "source ~/.bashrc && pm2 delete node-app || true"
 
+
+          #start server with pm2
+          ssh ${EC2_USER}@${EC2_HOST} "source ~/.bashrc && pm2 start ~/app/dist/index.js --name node-app"
+
       # - name: Deploy to EC2
       #   uses: easingthemes/ssh-deploy@v2.1.5
       #   with:
