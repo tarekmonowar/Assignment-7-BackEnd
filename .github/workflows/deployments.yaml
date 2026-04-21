@@ -61,22 +61,23 @@ jobs:
         run: |
           ssh ${EC2_USER}@${EC2_HOST} "mkdir -p ~/app"
 
-          rsync -avz\
+          rsync -avz \
             --exclude 'node_modules' \
             --exclude '.git' \
             . ${EC2_USER}@${EC2_HOST}:~/app/
 
           #install dependencies and restart server
-          ssh ${EC2_USER}@${EC2_HOST} "cd ~/app && export NVM_DIR="$HOME/.nvm" &&
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh && npm ci --production"
+          ssh ${EC2_USER}@${EC2_HOST} 'cd ~/app && export NVM_DIR="$HOME/.nvm" && \
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm ci --production'
 
           #delete pm2 if exits
-          ssh ${EC2_USER}@${EC2_HOST} "export NVM_DIR="$HOME/.nvm
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && pm2 delete node-app || true"
+          ssh ${EC2_USER}@${EC2_HOST} 'export NVM_DIR="$HOME/.nvm" && \
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && pm2 delete node-app || true'
+
 
 
           #start server with pm2
-          ssh ${EC2_USER}@${EC2_HOST} "export NVM_DIR="$HOME/.nvm" &&
+          ssh ${EC2_USER}@${EC2_HOST} 'export NVM_DIR="$HOME/.nvm" && \
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && pm2 start ~/app/dist/index.js --name node-app"
 
       # - name: Deploy to EC2
