@@ -140,7 +140,7 @@ jobs:
             # curl diye check kora server 200 OK dicche ki na
             # --fail dile jodi status 400/500 hoy tobe script error dibe
             # -s (silent) jate extra info na ashe
-            if curl -s --fail http://localhost:${{ secrets.PORT }}; then
+            if curl -s --fail http://localhost:9092; then
               echo -e "\n✅ Health Check Passed: Server is responding!"
             else
               echo -e "\n❌ Health Check Failed: Server is NOT responding!"
