@@ -78,7 +78,7 @@ jobs:
 
           #start server with pm2
           ssh ${EC2_USER}@${EC2_HOST} 'export NVM_DIR="$HOME/.nvm" && \
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && pm2 start ~/app/dist/index.js --name node-app"
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && pm2 start ~/app/dist/index.js --name node-app'
 
       # - name: Deploy to EC2
       #   uses: easingthemes/ssh-deploy@v2.1.5
