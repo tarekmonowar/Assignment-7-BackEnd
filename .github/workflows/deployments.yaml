@@ -68,7 +68,7 @@ jobs:
 
           #install dependencies and restart server
           ssh ${EC2_USER}@${EC2_HOST} 'cd ~/app && export NVM_DIR="$HOME/.nvm" && \
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm ci --production'
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm ci'
 
           #delete pm2 if exits
           ssh ${EC2_USER}@${EC2_HOST} 'export NVM_DIR="$HOME/.nvm" && \
