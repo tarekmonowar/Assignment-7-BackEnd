@@ -45,7 +45,7 @@ app.use("/contact", contact);
 
 // Home
 app.get("/", (req, res) => {
-  res.send("I am getting data from home");
+  res.send("I am getting data from home ec2");
 });
 
 // 404
