@@ -123,9 +123,15 @@ jobs:
           echo "Waiting 10s for app to start..."
           sleep 10
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            # Node Environment setup
+            # Node Environment setup (fnm + nvm fallback)
+            export FNM_DIR="$HOME/.local/share/fnm"
+            if [ -d "$FNM_DIR" ]; then
+              export PATH="$FNM_DIR:$PATH"
+              eval "$(fnm env)"
+            fi
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:/usr/local/bin:$PATH"
 
             echo "=== PM2 Status ==="
             pm2 status
