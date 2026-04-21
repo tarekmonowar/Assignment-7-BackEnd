@@ -111,7 +111,7 @@ jobs:
             pm2 start dist/index.js --name node-app
             pm2 save
 
-            # Enable pm2 to auto-start on EC2 reboot. ata protibar run korle duplicate pm2 process create hobe tai manually run kora lagbe akbar.pm2 startup & past & pm2 save
+            # Enable pm2 to auto-start on EC2 reboot. ata protibar run korle duplicate pm2 process create hobe tai manually run kora lagbe akbar.pm2 startup systemd & past & pm2 save & sudo reboot
             # pm2 startup systemd -u $(whoami) --hp $HOME 2>/dev/null || true
             # sudo env PATH=$PATH:$(which node | xargs dirname) pm2 startup systemd -u $(whoami) --hp $HOME 2>/dev/null || true
             # pm2 save
