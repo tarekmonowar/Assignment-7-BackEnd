@@ -71,7 +71,7 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh && npm ci --production"
 
           #delete pm2 if exits
-          ssh ${EC2_USER}@${EC2_HOST} "export NVM_DIR="$HOME/.nvm"
+          ssh ${EC2_USER}@${EC2_HOST} "export NVM_DIR="$HOME/.nvm
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && pm2 delete node-app || true"
 
 
